@@ -1,25 +1,30 @@
 import com.sun.source.tree.NewArrayTree;
+import jdk.jfr.Event;
 
 import java.util.Scanner;
 
 public class Nacho {
+
+    // Data Structures
+    private static TaskList tasklist = new TaskList();
+
     // Visual Elements
     private static String horizontal_line = "-----------------------------------";
     private static int indent_level = 4;
 
-    private static void greeting() {
-        // Greeting
-        System.out.println(horizontal_line);
-        System.out.println("Hello I'm Nacho\nWhat can I do for you?");
-        System.out.println(horizontal_line);
+    private static void NachoSays(String message) {
+        String styled_message = (horizontal_line + "\n" + message + "\n" + horizontal_line).indent(indent_level);
+        System.out.print(styled_message);
     }
 
-    private static void reply(String message) {
-        String indent = " ".repeat(indent_level);
+    private static void greeting() {
+        // Greeting
+        NachoSays("Hello I'm Nacho\nWhat can I do for you?");
+    }
 
-        System.out.println(indent + horizontal_line);
-        System.out.println(indent + message);
-        System.out.println(indent + horizontal_line);
+    private static void exit() {
+        // Goodbye Message
+        NachoSays("Bye. Hope to see you soon!");
     }
 
     private static void echo() {
@@ -28,75 +33,94 @@ public class Nacho {
         String query = scanner.nextLine();
 
         while(!query.equals("bye")) {
-            System.out.println(horizontal_line);
-            System.out.println(query);
-            System.out.println(horizontal_line);
-
+            NachoSays(query);
             query = scanner.nextLine();
         }
     }
 
+    private static void addTaskToList(Task newTask) {
+        tasklist.addTask(newTask);
+        String replyMessage = "Got it. I've added this task:\n"
+                + newTask.toString().indent(indent_level)
+                + "\nNow you have " + tasklist.getTotalTasks() + " tasks in the list.";
+        NachoSays(replyMessage);
+    }
 
     public static void main(String[] args) {
 
+        // Reused variables in case (a lil ugly)
+        String replyMessage;
+        int target_index;
+        Task targetTask;
+        String taskTitle;
+        // ================================
+
         Nacho.greeting();
 
-        // List Items ===================================
-        Task[] todos = new Task[100];
-        int total_todos = 0;
-
+        // Command Loop
         Scanner scanner = new Scanner(System.in);
         String query = scanner.nextLine();
 
         while(!query.equals("bye")) {
-            // Check and Uncheck =============================================
+
+            // Get command
             String[] query_words = query.split(" ");
 
-            if (query_words[0].equals("mark")) {
-               int target = Integer.parseInt(query_words[1]) - 1;
-               todos[target].markCompleted();
+            String command = query_words[0];
 
-               System.out.println("Nice! I've marked this task as done:\n    " + todos[target]);
-               System.out.println(horizontal_line);
-               query = scanner.nextLine();
-               continue;
-            } else if (query_words[0].equals("unmark")) {
-                int target = Integer.parseInt(query_words[1]) - 1;
-                todos[target].unmarkCompleted();
+            switch(command) {
+                case "list":
+                    String listMessage = "Here are your tasks in your list:\n" + tasklist;
+                    NachoSays(listMessage);
+                    break;
 
-                System.out.println("Nice! I've marked this task as not done yet:\n    " + todos[target]);
-                System.out.println(horizontal_line);
-                query = scanner.nextLine();
-                continue;
-            }
+                case "todo":
+                    taskTitle = query.replace("todo ", "");
+                    TodoTask newTodo = new TodoTask(taskTitle);
+                    Nacho.addTaskToList(newTodo);
+                    break;
 
+                case "deadline":
+                    taskTitle = query.substring(0, query.indexOf("/by") - 1).replace("deadline ", "");
+                    String byDate = query.substring(query.indexOf("/by")).replace("/by ", "");
+                    DeadlineTask newDeadline = new DeadlineTask(taskTitle, byDate);
+                    Nacho.addTaskToList(newDeadline);
+                    break;
 
-            // Add and List ==================================================
-            if (!query.equals("list")) {
-                Task new_task = new Task(query);
-                todos[total_todos] = new_task;
-                total_todos += 1;
+                case "event":
+                    taskTitle = query.substring(0, query.indexOf("/from") - 1).replace("event ", "");
+                    String fromDate = query.substring(query.indexOf("/from"), query.indexOf("/to") - 1)
+                            .replace("/from ", "");
+                    String toDate = query.substring(query.indexOf("/to ")).replace("/to ", "");
+                    EventTask newEvent = new EventTask(taskTitle, fromDate, toDate);
+                    Nacho.addTaskToList(newEvent);
+                    break;
 
-                Nacho.reply("added: " + new_task.getTitle());
+                case "mark":
+                    target_index = Integer.parseInt(query_words[1]) - 1;
+                    targetTask = tasklist.getTask(target_index);
+                    targetTask.markCompleted();
 
-            } else {
-                String item_list = "";
-                String indent = " ".repeat(indent_level);
-                for(int i = 0; i < total_todos; i++){
-                    String item = String.format("%d. %s", i + 1, todos[i]);
-                    item_list = item_list.concat("\n" + indent + item);
-                }
-                Nacho.reply("Here are the tasks in your list:" + item_list);
+                    replyMessage = "Nice! I've marked this task as done:\n"
+                            + targetTask.toString().indent(indent_level);
+                    NachoSays(replyMessage);
+                    break;
+
+                case "unmark":
+                    target_index = Integer.parseInt(query_words[1]) - 1;
+                    targetTask = tasklist.getTask(target_index);
+                    targetTask.unmarkCompleted();
+                    replyMessage = "OK, I've marked this task as not done yet:\n"
+                            + targetTask.toString().indent(indent_level);
+                    NachoSays(replyMessage);
+                    break;
+                default:
+                    NachoSays("Sorry I don't know this command");
             }
 
             query = scanner.nextLine();
         }
 
-        // ===============================================
-
-        // Exit
-        System.out.println(horizontal_line);
-        System.out.println("Bye. Hope to see you soon!");
-        System.out.println(horizontal_line);
+        Nacho.exit();
     }
 }
