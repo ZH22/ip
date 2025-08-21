@@ -6,6 +6,12 @@ public class AddDeadlineCommand implements Command{
     public void execute(String[] args, ChatContext context) {
 
         int by_index = Arrays.asList(args).indexOf("/by");
+
+        if(by_index == -1 || by_index == args.length - 1)
+            throw new UserInputException("Missing Deadline Date.\nSend 'help' for example");
+        else if(by_index == 0)
+            throw new UserInputException("Missing Event Title\nSend 'help' for example");
+
         String taskTitle = String.join(" ", Arrays.copyOfRange(args, 0, by_index));
         String byDate =  String.join(" ", Arrays.copyOfRange(args, by_index + 1, args.length));
 

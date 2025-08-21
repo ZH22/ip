@@ -2,8 +2,12 @@ public class UnmarkTaskCommand implements Command{
 
     @Override
     public void execute(String[] args, ChatContext context) {
-       int target_index = Integer.parseInt(args[0]) - 1;
-       Task targetTask = context.getTaskList().getTask(target_index);
+        int target_index = Integer.parseInt(args[0]) - 1;
+
+        if(target_index < 0 || target_index >= context.getTaskList().getTotalTasks())
+            throw new UserInputException("Targeted Task Number not in list");
+
+        Task targetTask = context.getTaskList().getTask(target_index);
 
         targetTask.unmarkCompleted();
 
