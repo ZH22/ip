@@ -6,7 +6,10 @@ public class HelpCommand implements Command{
                 "list\n" +
                 "todo <task_header>\n" +
                 "deadline <task_header> /by <deadline_date>\n" +
-                "event <task_header> /from <start_date> /to <end_date>";
-        context.reply("Available commands: todo deadline event");
+                "event <task_header> /from <start_date> /to <end_date>\n" +
+                "mark <task_number>\n" +
+                "unmark <task_number>\n" +
+                "delete <task_number>";
+        context.reply(helpMessage);
     }
 }

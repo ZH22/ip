@@ -13,12 +13,13 @@ public class Nacho {
 
         // Registering commands
         Map<String, Command> commandRegistry = new HashMap<>();
-        commandRegistry.put("/help", new HelpCommand());
+        commandRegistry.put("help", new HelpCommand());
         commandRegistry.put("todo", new AddTodoCommand());
         commandRegistry.put("deadline", new AddDeadlineCommand());
         commandRegistry.put("event", new AddEventCommand());
         commandRegistry.put("mark", new MarkTaskCommand());
         commandRegistry.put("unmark", new UnmarkTaskCommand());
+        commandRegistry.put("delete", new DeleteTaskCommand());
         commandRegistry.put("list", new ListTasksCommand());
 
 
