@@ -8,6 +8,19 @@ public class EventTask extends Task {
         this.to_date = to_date;
     }
 
+
+    @Override
+    public String getStorageRepresentation() {
+        String[] info = new String[5];
+        info[0] = "E";
+        info[1] = Integer.toString(this.isCompleted());
+        info[2] = this.getTitle();
+        info[3] = this.from_date;
+        info[4] = this.to_date;
+
+        return String.join(" | ", info);
+    }
+
     @Override
     public String toString() {
         String event_date_string = "(from: " + this.from_date + " to: " + this.to_date + ")";

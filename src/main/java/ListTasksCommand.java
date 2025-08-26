@@ -4,7 +4,5 @@ public class ListTasksCommand implements Command{
 
         String listMessage = "Here are your tasks in your list:\n" + context.getTaskList();
         context.reply(listMessage);
-
     }
-
 }

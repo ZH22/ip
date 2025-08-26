@@ -1,4 +1,4 @@
-public class Task {
+abstract class Task {
     private boolean completed;
     private String title;
 
@@ -18,6 +18,12 @@ public class Task {
     public void unmarkCompleted() {
         this.completed = false;
     }
+
+    public int isCompleted() {
+        return this.completed ? 1 : 0;
+    }
+
+    public abstract String getStorageRepresentation();
 
     @Override
     public String toString() {

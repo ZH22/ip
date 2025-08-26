@@ -20,6 +20,14 @@ public class TaskList {
         return task_list.size();
     }
 
+    public String getStorageRepresentation() {
+        String item_list = "";
+        for(int i = 0; i < task_list.size(); i++){
+            item_list = item_list.concat(task_list.get(i).getStorageRepresentation() + "\n");
+        }
+        return item_list;
+    }
+
     @Override
     public String toString() {
         String item_list = "";
