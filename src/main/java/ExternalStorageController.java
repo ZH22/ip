@@ -28,6 +28,11 @@ public class ExternalStorageController {
     }
 
     public static String getStore() {
-        return "TEMP";
+        try {
+            return Files.readString(Paths.get(DATA_DIR + DATA_FILENAME));
+        } catch (IOException e){
+            System.out.println("An I/O error occurred " + e.getMessage());
+            return "";
+        }
     }
 }

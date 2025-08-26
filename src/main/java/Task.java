@@ -13,10 +13,12 @@ abstract class Task {
 
     public void markCompleted() {
         this.completed = true;
+        ExternalStorageController.updateStore(this.getStorageRepresentation());
     }
 
     public void unmarkCompleted() {
         this.completed = false;
+        ExternalStorageController.updateStore(this.getStorageRepresentation());
     }
 
     public int isCompleted() {
