@@ -6,29 +6,35 @@ public class TaskList {
     ArrayList<Task> task_list = new ArrayList<>();
 
     public TaskList(String storageInput) {
+        try {
+            // Load Incoming Data From storage location
+            for (String line : storageInput.lines().toList()) {
+                char taskType = line.charAt(0);
+                String[] info = line.split(" \\| ");
+                Task temp = null;
 
-        // Load Incoming Data From storage location
-        for (String line : storageInput.lines().toList()) {
-            char taskType = line.charAt(0);
-            String info[] = line.split(" \\| ");
-            Task temp = null;
+                if (taskType == 'T') {
+                    temp = new TodoTask(info[2]);
+                } else if (taskType == 'D') {
+                    temp = new DeadlineTask(info[2], info[3]);
+                } else if (taskType == 'E') {
+                    temp = new EventTask(info[2], info[3], info[4]);
+                } else {
+                    throw new Exception("Wrong input format");
+                }
 
-            if (taskType == 'T') {
-                temp = new TodoTask(info[2]);
-            } else if (taskType == 'D') {
-                temp = new DeadlineTask(info[2], info[3]);
-            } else if (taskType == 'E') {
-                temp = new EventTask(info[2], info[3], info[4]);
-            }
-
-            if (temp != null) {
                 if (Objects.equals(info[1], "1")) {
                     temp.markCompleted();
                 }
                 task_list.add(temp);
             }
-
+        } catch (Exception e) {
+            // Highlight wrong input and start fresh
+            System.out.println("WRONG INPUT DATA FORMAT!\n Saving wrong content as oldCorrupted.txt and creating new");
+            task_list = new ArrayList<>();
+            ExternalStorageController.createTempCorruptedFile();
         }
+
     }
 
     public void addTask(Task task) {
