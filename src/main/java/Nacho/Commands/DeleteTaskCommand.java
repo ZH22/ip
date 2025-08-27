@@ -1,4 +1,10 @@
-public class DeleteTaskCommand implements Command{
+package Nacho.Commands;
+
+import Nacho.ChatContext;
+import Nacho.Tasks.Task;
+import Nacho.Exceptions.UserInputException;
+
+public class DeleteTaskCommand implements Command {
 
     @Override
     public void execute(String[] args, ChatContext context) {

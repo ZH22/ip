@@ -1,6 +1,12 @@
+package Nacho.Commands;
+
+import Nacho.ChatContext;
+import Nacho.Tasks.EventTask;
+import Nacho.Exceptions.UserInputException;
+
 import java.util.Arrays;
 
-public class AddEventCommand implements Command{
+public class AddEventCommand implements Command {
 
     @Override
     public void execute(String[] args, ChatContext context) {

@@ -1,3 +1,8 @@
+package Nacho.Commands;
+
+import Nacho.ChatContext;
+import Nacho.Exceptions.UserInputException;
+
 import java.util.Arrays;
 import java.util.Map;
 

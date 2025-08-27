@@ -1,4 +1,10 @@
-public class MarkTaskCommand implements Command{
+package Nacho.Commands;
+
+import Nacho.*;
+import Nacho.Exceptions.UserInputException;
+import Nacho.Tasks.Task;
+
+public class MarkTaskCommand implements Command {
 
     @Override
     public void execute(String[] args, ChatContext context) {

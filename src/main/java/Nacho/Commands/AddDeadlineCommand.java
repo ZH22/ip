@@ -1,6 +1,12 @@
+package Nacho.Commands;
+
+import Nacho.ChatContext;
+import Nacho.Tasks.DeadlineTask;
+import Nacho.Exceptions.UserInputException;
+
 import java.util.Arrays;
 
-public class AddDeadlineCommand implements Command{
+public class AddDeadlineCommand implements Command {
 
     @Override
     public void execute(String[] args, ChatContext context) {
