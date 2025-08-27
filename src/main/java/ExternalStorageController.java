@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileWriter;
 
 public class ExternalStorageController {
+    // Handles Interactions with external file
 
     private static final String DATA_DIR = "./data/";
     private static final String DATA_FILENAME = "mainStore.txt";

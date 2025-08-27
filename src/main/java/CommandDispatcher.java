@@ -2,6 +2,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 public class CommandDispatcher {
+    // Command Registry Mappings
     private final Map<String, Command> registry;
 
     public CommandDispatcher(Map<String, Command> registry) {
@@ -10,12 +11,13 @@ public class CommandDispatcher {
 
     public void dispatch(String userInput, ChatContext context) {
 
+        // Run Commands and Catch Command Related Errors
         try {
-
             String[] parts = userInput.split(" ");
             String commandName = parts[0];
             String[] args = Arrays.copyOfRange(parts, 1, parts.length);
 
+            // Check against command registry and execute respective command
             Command cmd = registry.get(commandName);
             if (cmd != null) {
                 cmd.execute(args, context);
