@@ -6,8 +6,13 @@ public class DeadlineTask extends Task {
 
     private LocalDateTime by_date;
 
-    private String getByDateString() {
+    private String getByDateDisplayString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM y - hh:mm a");
+        return this.by_date.format(formatter);
+    }
+
+    private String getByDateStorageString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy-HH:mm");
         return this.by_date.format(formatter);
     }
 
@@ -17,7 +22,6 @@ public class DeadlineTask extends Task {
         // Throws java.time.format.DateTimeParseException if invalid input
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy-HH:mm");
-            System.out.println(by_date);
             this.by_date = LocalDateTime.parse(by_date, formatter);
         } catch (DateTimeParseException e) {
             throw new UserInputException("Wrong Date Format! Use dd/MM/yyyy-HH:mm");
@@ -30,13 +34,13 @@ public class DeadlineTask extends Task {
         info[0] = "D";
         info[1] = Integer.toString(this.isCompleted());
         info[2] = this.getTitle();
-        info[3] = this.getByDateString();
+        info[3] = this.getByDateStorageString();
 
         return String.join(" | ", info);
     }
 
     @Override
     public String toString(){
-        return "[D]" + super.toString() + " (by: " + this.getByDateString() + ")";
+        return "[D]" + super.toString() + " (by: " + this.getByDateDisplayString() + ")";
     }
 }
