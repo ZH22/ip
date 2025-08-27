@@ -1,3 +1,7 @@
+package Nacho;
+
+import Nacho.Tasks.TaskList;
+
 public class ChatContext {
     // Visual Elements
     private static String horizontal_line = "-----------------------------------";

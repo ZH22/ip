@@ -1,4 +1,10 @@
-public class AddTodoCommand implements Command{
+package Nacho.Commands;
+
+import Nacho.ChatContext;
+import Nacho.Tasks.TodoTask;
+import Nacho.Exceptions.UserInputException;
+
+public class AddTodoCommand implements Command {
 
     @Override
     public void execute(String[] args, ChatContext context) {
