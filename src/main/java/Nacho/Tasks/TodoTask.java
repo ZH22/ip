@@ -1,5 +1,8 @@
 package Nacho.Tasks;
 
+/**
+ * Task with just a Title
+ */
 public class TodoTask extends Task {
 
     public TodoTask(String title) {

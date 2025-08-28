@@ -6,6 +6,9 @@ import java.nio.file.Paths;
 import java.io.File;
 import java.io.FileWriter;
 
+/**
+ * Interfaces with External Storage Text File
+ */
 public class ExternalStorageController {
     // Handles Interactions with external file
 
@@ -30,6 +33,12 @@ public class ExternalStorageController {
         }
     }
 
+    /**
+     * Copies content of text file referenced by the default save location into a separate text file
+     * <p>
+     *     Save new text file at path "./data/ted.txt"
+     * </p>
+     */
     public static void createTempCorruptedFile() {
         // Creates a copy of the data file into a temporary file storing potentially corrupted data
         try {

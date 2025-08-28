@@ -6,6 +6,10 @@ import Nacho.Exceptions.UserInputException;
 import java.util.Arrays;
 import java.util.Map;
 
+
+/**
+ * Takes User Input directly to parse and execute the respective target Commands respectively
+ */
 public class CommandDispatcher {
     // Command Registry Mappings
     private final Map<String, Command> registry;

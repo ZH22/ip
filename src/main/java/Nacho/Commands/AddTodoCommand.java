@@ -4,6 +4,9 @@ import Nacho.ChatContext;
 import Nacho.Tasks.TodoTask;
 import Nacho.Exceptions.UserInputException;
 
+/**
+ * Parses User Input and adds new TodoTask if valid
+ */
 public class AddTodoCommand implements Command {
 
     @Override

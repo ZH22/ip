@@ -6,6 +6,9 @@ import Nacho.Exceptions.UserInputException;
 
 import java.util.Arrays;
 
+/**
+ * Parses User input and adds new EventTask to Task List if valid
+ */
 public class AddEventCommand implements Command {
 
     @Override

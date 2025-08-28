@@ -2,6 +2,9 @@ package Nacho.Commands;
 
 import Nacho.ChatContext;
 
+/**
+ * Provides a reply with example usage of the commands available.
+ */
 public class HelpCommand implements Command {
 
     @Override

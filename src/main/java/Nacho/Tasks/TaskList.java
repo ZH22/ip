@@ -5,6 +5,9 @@ import Nacho.ExternalStorageController;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * List of Task objects with implementations
+ */
 public class TaskList {
     ArrayList<Task> task_list = new ArrayList<>();
 
