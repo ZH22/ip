@@ -2,12 +2,12 @@ package Nacho.Tasks;
 
 public class EventTask extends Task {
 
-    String from_date, to_date;
+    String fromDate, toDate;
 
     public EventTask(String title, String from_date, String to_date) {
         super(title);
-        this.from_date = from_date;
-        this.to_date = to_date;
+        this.fromDate = from_date;
+        this.toDate = to_date;
     }
 
 
@@ -17,15 +17,15 @@ public class EventTask extends Task {
         info[0] = "E";
         info[1] = Integer.toString(this.isCompleted());
         info[2] = this.getTitle();
-        info[3] = this.from_date;
-        info[4] = this.to_date;
+        info[3] = this.fromDate;
+        info[4] = this.toDate;
 
         return String.join(" | ", info);
     }
 
     @Override
     public String toString() {
-        String event_date_string = "(from: " + this.from_date + " to: " + this.to_date + ")";
+        String event_date_string = "(from: " + this.fromDate + " to: " + this.toDate + ")";
         return "[E]" + super.toString() + " " + event_date_string;
     }
 }

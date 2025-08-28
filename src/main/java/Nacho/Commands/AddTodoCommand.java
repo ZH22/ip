@@ -10,7 +10,7 @@ public class AddTodoCommand implements Command {
     public void execute(String[] args, ChatContext context) {
 
         // Error when user doesnt provide task tile
-        if(args.length == 0) {
+        if (args.length == 0) {
             throw new UserInputException("Missing Todo item title!\nTell me what you want to do x_x don't leave it blank");
         }
 

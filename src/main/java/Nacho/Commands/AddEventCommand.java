@@ -12,21 +12,22 @@ public class AddEventCommand implements Command {
     public void execute(String[] args, ChatContext context) {
 
 
-        int from_index = Arrays.asList(args).indexOf("/from");
-        int to_index = Arrays.asList(args).indexOf("/to");
+        int fromIndex = Arrays.asList(args).indexOf("/from");
+        int toIndex = Arrays.asList(args).indexOf("/to");
 
-        if(args.length == 0 || from_index == -1 || to_index == -1)
+        if (args.length == 0 || fromIndex == -1 || toIndex == -1) {
             throw new UserInputException("Missing arguments!\nSee 'help' for more info");
-        else if(from_index == 0)
+        } else if (fromIndex == 0) {
             throw new UserInputException("Missing Event Title!!!");
-        else if(to_index == args.length - 1)
+        } else if (toIndex == args.length - 1) {
             throw new UserInputException("Missing Event End Timing!");
-        else if(to_index - from_index == 1)
+        } else if (toIndex - fromIndex == 1) {
             throw new UserInputException("Missing Event Start Timing");
+        }
 
-        String taskTitle = String.join(" ", Arrays.copyOfRange(args, 0, from_index));
-        String fromDate =  String.join(" ", Arrays.copyOfRange(args, from_index + 1, to_index));
-        String toDate =  String.join(" ", Arrays.copyOfRange(args, to_index + 1, args.length));
+        String taskTitle = String.join(" ", Arrays.copyOfRange(args, 0, fromIndex));
+        String fromDate =  String.join(" ", Arrays.copyOfRange(args, fromIndex + 1, toIndex));
+        String toDate =  String.join(" ", Arrays.copyOfRange(args, toIndex + 1, args.length));
 
         EventTask newEvent = new EventTask(taskTitle, fromDate, toDate);
         context.getTaskList().addTask(newEvent);

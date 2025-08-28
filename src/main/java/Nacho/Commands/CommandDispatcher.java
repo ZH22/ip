@@ -29,7 +29,7 @@ public class CommandDispatcher {
             } else {
                 context.reply("Sorry I don't know this command. \n\nTry 'help' for a list of commands to use!");
             }
-        } catch (UserInputException e){
+        } catch (UserInputException e) {
             context.reply(e.getMessage());
         } catch (Exception e) {
             context.reply("Unexpected Error!! Nacho doesn't really know either T^T");
