@@ -4,6 +4,9 @@ import Nacho.ChatContext;
 import Nacho.Tasks.Task;
 import Nacho.Exceptions.UserInputException;
 
+/**
+ * Deletes Task from TaskList specified by position of task in list
+ */
 public class DeleteTaskCommand implements Command {
 
     @Override

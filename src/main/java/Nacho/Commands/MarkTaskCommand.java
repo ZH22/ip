@@ -4,6 +4,9 @@ import Nacho.*;
 import Nacho.Exceptions.UserInputException;
 import Nacho.Tasks.Task;
 
+/**
+ * Marks target task completed, specified by position in TaskList
+ */
 public class MarkTaskCommand implements Command {
 
     @Override

@@ -1,5 +1,8 @@
 package Nacho.Tasks;
 
+/**
+ * Task with a time range (from - to)
+ */
 public class EventTask extends Task {
 
     String from_date, to_date;

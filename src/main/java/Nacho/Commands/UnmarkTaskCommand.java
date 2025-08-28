@@ -4,6 +4,9 @@ import Nacho.*;
 import Nacho.Exceptions.UserInputException;
 import Nacho.Tasks.Task;
 
+/**
+ * Removes Completed Status from Task (if any)
+ */
 public class UnmarkTaskCommand implements Command {
 
     @Override

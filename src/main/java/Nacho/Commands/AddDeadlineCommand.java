@@ -6,6 +6,9 @@ import Nacho.Exceptions.UserInputException;
 
 import java.util.Arrays;
 
+/**
+ * Parses User Input and adds new DeadlineTask object to TaskList if valid
+ */
 public class AddDeadlineCommand implements Command {
 
     @Override

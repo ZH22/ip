@@ -2,6 +2,9 @@ package Nacho.Commands;
 
 import Nacho.ChatContext;
 
+/**
+ * Replies with a representation of all tasks added in TaskList
+ */
 public class ListTasksCommand implements Command {
     @Override
     public void execute(String[] args, ChatContext context) {
