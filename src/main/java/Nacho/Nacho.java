@@ -11,10 +11,10 @@ public class Nacho {
     public static void main(String[] args) {
 
         // Creating chat context
-        TaskList tasklist = new TaskList(ExternalStorageController.getStore());
+        TaskList taskList = new TaskList(ExternalStorageController.getStore());
 
         // Add TaskList object to current chat's context
-        ChatContext context = new ChatContext(tasklist);
+        ChatContext context = new ChatContext(taskList);
 
         // Registering commands
         Map<String, Command> commandRegistry = new HashMap<>();

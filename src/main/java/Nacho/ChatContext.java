@@ -7,8 +7,8 @@ import Nacho.Tasks.TaskList;
  */
 public class ChatContext {
     // Visual Elements
-    private static String horizontal_line = "-----------------------------------";
-    private static int indent_level = 4;
+    private static String horizontalLine = "-----------------------------------";
+    private static int indentLevel = 4;
     private TaskList taskList;
 
     public ChatContext(TaskList taskList) {
@@ -20,7 +20,7 @@ public class ChatContext {
     }
 
     public int get_indent_level() {
-        return indent_level;
+        return indentLevel;
     }
 
     /**
@@ -29,7 +29,7 @@ public class ChatContext {
      * @param message String containing information to be "said" by Nacho Chatbot
      */
     public void reply(String message) {
-        String styled_message = (horizontal_line + "\n" + message + "\n" + horizontal_line).indent(indent_level);
+        String styled_message = (horizontalLine + "\n" + message + "\n" + horizontalLine).indent(indentLevel);
         System.out.print(styled_message);
     }
 }

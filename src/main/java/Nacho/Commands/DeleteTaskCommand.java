@@ -15,13 +15,14 @@ public class DeleteTaskCommand implements Command {
             throw new UserInputException("Require index number of task to delete");
         }
 
-        int target_index = Integer.parseInt(args[0]) - 1;
+        int targetindex = Integer.parseInt(args[0]) - 1;
 
-        if(target_index < 0 || target_index >= context.getTaskList().getTotalTasks())
-           throw new UserInputException("Targeted Task Number not in list");
+        if(targetindex < 0 || targetindex >= context.getTaskList().getTotalTasks()) {
+            throw new UserInputException("Targeted Task Number not in list");
+        }
 
-        Task targetTask = context.getTaskList().getTask(target_index);
-        context.getTaskList().deleteTask(target_index);
+        Task targetTask = context.getTaskList().getTask(targetindex);
+        context.getTaskList().deleteTask(targetindex);
 
         String replyMessage = "Noted. I removed this task:\n"
                 + targetTask.toString().indent(context.get_indent_level());

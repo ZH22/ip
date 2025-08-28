@@ -12,16 +12,16 @@ import java.time.format.DateTimeFormatter;
 
 public class DeadlineTask extends Task {
 
-    private LocalDateTime by_date;
+    private LocalDateTime byDate;
 
     private String getByDateDisplayString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM y - hh:mm a");
-        return this.by_date.format(formatter);
+        return this.byDate.format(formatter);
     }
 
     private String getByDateStorageString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy-HH:mm");
-        return this.by_date.format(formatter);
+        return this.byDate.format(formatter);
     }
 
     public DeadlineTask(String title, String by_date) throws UserInputException {
@@ -30,7 +30,7 @@ public class DeadlineTask extends Task {
         // Throws java.time.format.DateTimeParseException if invalid input
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy-HH:mm");
-            this.by_date = LocalDateTime.parse(by_date, formatter);
+            this.byDate = LocalDateTime.parse(by_date, formatter);
         } catch (DateTimeParseException e) {
             throw new UserInputException("Wrong Date Format! Use dd/MM/yyyy-HH:mm");
         }
@@ -48,7 +48,7 @@ public class DeadlineTask extends Task {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "[D]" + super.toString() + " (by: " + this.getByDateDisplayString() + ")";
     }
 }

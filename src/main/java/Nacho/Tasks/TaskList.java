@@ -9,7 +9,7 @@ import java.util.Objects;
  * List of Task objects with implementations
  */
 public class TaskList {
-    ArrayList<Task> task_list = new ArrayList<>();
+    ArrayList<Task> taskList = new ArrayList<>();
 
     public TaskList(String storageInput) {
         try {
@@ -32,50 +32,50 @@ public class TaskList {
                 if (Objects.equals(info[1], "1")) {
                     temp.markCompleted();
                 }
-                task_list.add(temp);
+                taskList.add(temp);
             }
         } catch (Exception e) {
             // Highlight wrong input and start fresh
             System.out.println("WRONG INPUT DATA FORMAT!\n Saving wrong content as oldCorrupted.txt and creating new");
-            task_list = new ArrayList<>();
+            taskList = new ArrayList<>();
             ExternalStorageController.createTempCorruptedFile();
         }
 
     }
 
     public void addTask(Task task) {
-        task_list.add(task);
+        taskList.add(task);
         ExternalStorageController.updateStore(this.getStorageRepresentation());
     }
 
     public void deleteTask(int task_index) {
-        task_list.remove(task_index);
+        taskList.remove(task_index);
         ExternalStorageController.updateStore(this.getStorageRepresentation());
     }
 
     public Task getTask(int task_index) {
-        return task_list.get(task_index);
+        return taskList.get(task_index);
     }
 
     public int getTotalTasks() {
-        return task_list.size();
+        return taskList.size();
     }
 
     public String getStorageRepresentation() {
-        String item_list = "";
-        for(int i = 0; i < task_list.size(); i++){
-            item_list = item_list.concat(task_list.get(i).getStorageRepresentation() + "\n");
+        String itemList = "";
+        for(int i = 0; i < taskList.size(); i++) {
+            itemList = itemList.concat(taskList.get(i).getStorageRepresentation() + "\n");
         }
-        return item_list;
+        return itemList;
     }
 
     @Override
     public String toString() {
-        String item_list = "";
-        for(int i = 0; i < task_list.size(); i++){
-            String item = String.format("%d. %s", i + 1, task_list.get(i));
-            item_list = item_list.concat(item + "\n");
+        String itemList = "";
+        for(int i = 0; i < taskList.size(); i++){
+            String item = String.format("%d. %s", i + 1, taskList.get(i));
+            itemList = itemList.concat(item + "\n");
         }
-        return item_list;
+        return itemList;
     }
 }

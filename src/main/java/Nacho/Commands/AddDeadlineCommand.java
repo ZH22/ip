@@ -14,15 +14,16 @@ public class AddDeadlineCommand implements Command {
     @Override
     public void execute(String[] args, ChatContext context) {
 
-        int by_index = Arrays.asList(args).indexOf("/by");
+        int byIndex = Arrays.asList(args).indexOf("/by");
 
-        if(by_index == -1 || by_index == args.length - 1)
+        if (byIndex == -1 || byIndex == args.length - 1) {
             throw new UserInputException("Missing Deadline Date.\nSend 'help' for example");
-        else if(by_index == 0)
+        } else if (byIndex == 0) {
             throw new UserInputException("Missing Event Title\nSend 'help' for example");
+        }
 
-        String taskTitle = String.join(" ", Arrays.copyOfRange(args, 0, by_index));
-        String byDate =  String.join(" ", Arrays.copyOfRange(args, by_index + 1, args.length));
+        String taskTitle = String.join(" ", Arrays.copyOfRange(args, 0, byIndex));
+        String byDate =  String.join(" ", Arrays.copyOfRange(args, byIndex + 1, args.length));
 
         DeadlineTask newDeadline = new DeadlineTask(taskTitle, byDate);
         context.getTaskList().addTask(newDeadline);
