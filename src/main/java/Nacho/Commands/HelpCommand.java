@@ -16,6 +16,7 @@ public class HelpCommand implements Command {
                 "event <task_header> /from <start_date> /to <end_date>\n" +
                 "mark <task_number>\n" +
                 "unmark <task_number>\n" +
+                "find <keyword>\n" +
                 "delete <task_number>";
         context.reply(helpMessage);
     }
