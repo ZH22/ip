@@ -2,6 +2,7 @@ package Nacho;
 
 import Nacho.Commands.*;
 import Nacho.Tasks.TaskList;
+import Nacho.Commands.FindCommand;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +27,7 @@ public class Nacho {
         commandRegistry.put("unmark", new UnmarkTaskCommand());
         commandRegistry.put("delete", new DeleteTaskCommand());
         commandRegistry.put("list", new ListTasksCommand());
+        commandRegistry.put("find", new FindCommand());
 
 
         // Creating Command dispatcher object -> will run the mapped command
