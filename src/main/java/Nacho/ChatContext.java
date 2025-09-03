@@ -19,7 +19,7 @@ public class ChatContext {
         return this.taskList;
     }
 
-    public int get_indent_level() {
+    public int getIndentLevel() {
         return indentLevel;
     }
 
@@ -29,7 +29,7 @@ public class ChatContext {
      * @param message String containing information to be "said" by Nacho Chatbot
      */
     public void reply(String message) {
-        String styled_message = (horizontalLine + "\n" + message + "\n" + horizontalLine).indent(indentLevel);
-        System.out.print(styled_message);
+        String styledMessage = (horizontalLine + "\n" + message + "\n" + horizontalLine).indent(indentLevel);
+        System.out.print(styledMessage);
     }
 }

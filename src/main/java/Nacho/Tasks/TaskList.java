@@ -48,13 +48,13 @@ public class TaskList {
         ExternalStorageController.updateStore(this.getStorageRepresentation());
     }
 
-    public void deleteTask(int task_index) {
-        taskList.remove(task_index);
+    public void deleteTask(int taskIndex) {
+        taskList.remove(taskIndex);
         ExternalStorageController.updateStore(this.getStorageRepresentation());
     }
 
-    public Task getTask(int task_index) {
-        return taskList.get(task_index);
+    public Task getTask(int taskIndex) {
+        return taskList.get(taskIndex);
     }
 
     public int getTotalTasks() {
@@ -63,8 +63,8 @@ public class TaskList {
 
     public String getStorageRepresentation() {
         String itemList = "";
-        for(int i = 0; i < taskList.size(); i++) {
-            itemList = itemList.concat(taskList.get(i).getStorageRepresentation() + "\n");
+        for (Task task : taskList) {
+            itemList = itemList.concat(task.getStorageRepresentation() + "\n");
         }
         return itemList;
     }

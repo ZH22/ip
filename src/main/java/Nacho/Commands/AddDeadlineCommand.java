@@ -29,7 +29,7 @@ public class AddDeadlineCommand implements Command {
         context.getTaskList().addTask(newDeadline);
 
         String replyMessage = "Got it. I've added this task:\n"
-                + newDeadline.toString().indent(context.get_indent_level())
+                + newDeadline.toString().indent(context.getIndentLevel())
                 + "\nNow you have " + context.getTaskList().getTotalTasks() + " tasks in the list.";
 
         context.reply(replyMessage);

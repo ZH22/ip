@@ -23,7 +23,7 @@ public class MarkTaskCommand implements Command {
         targetTask.markCompleted();
 
         String replyMessage = "Nice! I've marked this task as done:\n"
-                + targetTask.toString().indent(context.get_indent_level());
+                + targetTask.toString().indent(context.getIndentLevel());
 
         // Update External DB
         ExternalStorageController.updateStore(context.getTaskList().getStorageRepresentation());

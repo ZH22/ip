@@ -22,7 +22,7 @@ public class AddTodoCommand implements Command {
         TodoTask newTodo = new TodoTask(taskTitle);
         context.getTaskList().addTask(newTodo);
         String replyMessage = "Got it. I've added this task:\n"
-                + newTodo.toString().indent(context.get_indent_level())
+                + newTodo.toString().indent(context.getIndentLevel())
                 + "\nNow you have " + context.getTaskList().getTotalTasks() + " tasks in the list.";
 
         context.reply(replyMessage);

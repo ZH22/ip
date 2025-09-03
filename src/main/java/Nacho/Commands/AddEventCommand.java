@@ -36,7 +36,7 @@ public class AddEventCommand implements Command {
         context.getTaskList().addTask(newEvent);
 
         String replyMessage = "Got it. I've added this task:\n"
-                + newEvent.toString().indent(context.get_indent_level())
+                + newEvent.toString().indent(context.getIndentLevel())
                 + "\nNow you have " + context.getTaskList().getTotalTasks() + " tasks in the list.";
 
         context.reply(replyMessage);
