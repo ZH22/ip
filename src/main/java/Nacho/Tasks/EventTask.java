@@ -5,14 +5,20 @@ package Nacho.Tasks;
  */
 public class EventTask extends Task {
 
-    String fromDate, toDate;
+    private String fromDate;
+    private String toDate;
 
-    public EventTask(String title, String from_date, String to_date) {
+    /**
+     * Creates Event Task Object with start and end date
+     * @param title Task Title
+     * @param fromDate Start Date (String)
+     * @param toDate End Date (String)
+     */
+    public EventTask(String title, String fromDate, String toDate) {
         super(title);
-        this.fromDate = from_date;
-        this.toDate = to_date;
+        this.fromDate = fromDate;
+        this.toDate = toDate;
     }
-
 
     @Override
     public String getStorageRepresentation() {
@@ -28,7 +34,7 @@ public class EventTask extends Task {
 
     @Override
     public String toString() {
-        String event_date_string = "(from: " + this.fromDate + " to: " + this.toDate + ")";
-        return "[E]" + super.toString() + " " + event_date_string;
+        String eventDateString = "(from: " + this.fromDate + " to: " + this.toDate + ")";
+        return "[E]" + super.toString() + " " + eventDateString;
     }
 }

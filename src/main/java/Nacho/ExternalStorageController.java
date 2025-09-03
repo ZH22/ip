@@ -1,10 +1,10 @@
 package Nacho;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.io.File;
-import java.io.FileWriter;
 
 /**
  * Interfaces with External Storage Text File
@@ -16,6 +16,10 @@ public class ExternalStorageController {
     private static final String DATA_FILENAME = "mainStore.txt";
     private static final String CORRUPTED_TEMP_FILENAME = "oldCorrupted.txt";
 
+    /**
+     * Replaces storage text file with newContent String
+     * @param newContent String in storage format
+     */
     public static void updateStore(String newContent) {
 
         // Create Data Directory and File if not exist
@@ -60,7 +64,7 @@ public class ExternalStorageController {
     public static String getStore() {
         try {
             return Files.readString(Paths.get(DATA_DIR + DATA_FILENAME));
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println("An I/O error occurred " + e.getMessage());
             return "";
         }

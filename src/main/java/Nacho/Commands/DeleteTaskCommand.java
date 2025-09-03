@@ -1,8 +1,8 @@
 package Nacho.Commands;
 
 import Nacho.ChatContext;
-import Nacho.Tasks.Task;
 import Nacho.Exceptions.UserInputException;
+import Nacho.Tasks.Task;
 
 /**
  * Deletes Task from TaskList specified by position of task in list
@@ -17,7 +17,7 @@ public class DeleteTaskCommand implements Command {
 
         int targetIndex = Integer.parseInt(args[0]) - 1;
 
-        if(targetIndex < 0 || targetIndex >= context.getTaskList().getTotalTasks()) {
+        if (targetIndex < 0 || targetIndex >= context.getTaskList().getTotalTasks()) {
             throw new UserInputException("Targeted Task Number not in list");
         }
 

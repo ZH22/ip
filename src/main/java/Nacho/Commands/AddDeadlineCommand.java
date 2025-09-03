@@ -1,10 +1,11 @@
 package Nacho.Commands;
 
-import Nacho.ChatContext;
-import Nacho.Tasks.DeadlineTask;
-import Nacho.Exceptions.UserInputException;
-
 import java.util.Arrays;
+
+import Nacho.ChatContext;
+import Nacho.Exceptions.UserInputException;
+import Nacho.Tasks.DeadlineTask;
+
 
 /**
  * Parses User Input and adds new DeadlineTask object to TaskList if valid
@@ -23,7 +24,7 @@ public class AddDeadlineCommand implements Command {
         }
 
         String taskTitle = String.join(" ", Arrays.copyOfRange(args, 0, byIndex));
-        String byDate =  String.join(" ", Arrays.copyOfRange(args, byIndex + 1, args.length));
+        String byDate = String.join(" ", Arrays.copyOfRange(args, byIndex + 1, args.length));
 
         DeadlineTask newDeadline = new DeadlineTask(taskTitle, byDate);
         context.getTaskList().addTask(newDeadline);

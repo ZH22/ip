@@ -1,7 +1,8 @@
-package Nacho.Commands;// Interface inspired by https://medium.com/@neerukapoor/command-design-pattern-in-java-7d06dfdd31
+package Nacho.Commands;
 
 import Nacho.ChatContext;
 
+// Interface inspired by https://medium.com/@neerukapoor/command-design-pattern-in-java-7d06dfdd31
 /**
  * Interface of Commands
  * <p>
@@ -10,4 +11,5 @@ import Nacho.ChatContext;
  */
 public interface Command {
     public void execute(String[] args, ChatContext context);
+
 }

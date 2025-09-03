@@ -1,13 +1,26 @@
 package Nacho;
 
-import Nacho.Commands.*;
-import Nacho.Tasks.TaskList;
-import Nacho.Commands.FindCommand;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import Nacho.Commands.AddDeadlineCommand;
+import Nacho.Commands.AddEventCommand;
+import Nacho.Commands.AddTodoCommand;
+import Nacho.Commands.Command;
+import Nacho.Commands.CommandDispatcher;
+import Nacho.Commands.DeleteTaskCommand;
+import Nacho.Commands.FindCommand;
+import Nacho.Commands.HelpCommand;
+import Nacho.Commands.ListTasksCommand;
+import Nacho.Commands.MarkTaskCommand;
+import Nacho.Commands.UnmarkTaskCommand;
+import Nacho.Tasks.TaskList;
+
+/**
+ * Main class of Nacho Chatbot
+ * Task Tracking tool based on commands from CLI input
+ */
 public class Nacho {
     public static void main(String[] args) {
 

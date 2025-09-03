@@ -1,15 +1,16 @@
 package Nacho.Commands;
 
+import java.util.ArrayList;
+
 import Nacho.ChatContext;
 import Nacho.Exceptions.UserInputException;
 import Nacho.Tasks.Task;
 
-import java.util.ArrayList;
 
 /**
  * Finds a task by searching for a keyword in task description
  */
-public class FindCommand implements Command{
+public class FindCommand implements Command {
     @Override
     public void execute(String[] args, ChatContext context) {
 

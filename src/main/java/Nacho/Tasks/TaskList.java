@@ -1,16 +1,22 @@
 package Nacho.Tasks;
 
-import Nacho.ExternalStorageController;
-
 import java.util.ArrayList;
 import java.util.Objects;
+
+import Nacho.ExternalStorageController;
+
 
 /**
  * List of Task objects with implementations
  */
 public class TaskList {
-    ArrayList<Task> taskList = new ArrayList<>();
+    private ArrayList<Task> taskList = new ArrayList<>();
 
+    /**
+     * Takes in a string containing task information in custom storage format
+     * Returns TaskList object with respective task allocated in the list
+     * @param storageInput
+     */
     public TaskList(String storageInput) {
         try {
             // Load Incoming Data From storage location
@@ -43,16 +49,29 @@ public class TaskList {
 
     }
 
+    /**
+     * Adds a new Task Object to List
+     * @param task Task object to add
+     */
     public void addTask(Task task) {
         taskList.add(task);
         ExternalStorageController.updateStore(this.getStorageRepresentation());
     }
 
+    /**
+     * Removes specified Task object from list
+     * @param taskIndex index of Task being removed
+     */
     public void deleteTask(int taskIndex) {
         taskList.remove(taskIndex);
         ExternalStorageController.updateStore(this.getStorageRepresentation());
     }
 
+    /**
+     * gets speciied Task object
+     * @param taskIndex index of target Task
+     * @return Task Object at taskIndex
+     */
     public Task getTask(int taskIndex) {
         return taskList.get(taskIndex);
     }
@@ -61,6 +80,10 @@ public class TaskList {
         return taskList.size();
     }
 
+    /**
+     * Converts Task values in current list into custom storage formatted string
+     * @return String of formatted information about current tasks
+     */
     public String getStorageRepresentation() {
         String itemList = "";
         for (Task task : taskList) {
@@ -72,7 +95,7 @@ public class TaskList {
     @Override
     public String toString() {
         String itemList = "";
-        for(int i = 0; i < taskList.size(); i++){
+        for (int i = 0; i < taskList.size(); i++) {
             String item = String.format("%d. %s", i + 1, taskList.get(i));
             itemList = itemList.concat(item + "\n");
         }

@@ -1,10 +1,11 @@
 package Nacho.Tasks;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 import Nacho.Exceptions.UserInputException;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeParseException;
-import java.time.format.DateTimeFormatter;
 
 /**
  *  Task with a deadline (by) date
@@ -14,6 +15,24 @@ public class DeadlineTask extends Task {
 
     private LocalDateTime byDate;
 
+    /**
+     * Creates a Deadline Task Object
+     * @param title Task Title
+     * @param byDate datetime (dd/MM/yyyy-HH:mm") formatted
+     * @throws UserInputException
+     */
+    public DeadlineTask(String title, String byDate) throws UserInputException {
+        super(title);
+
+        // Throws java.time.format.DateTimeParseException if invalid input
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy-HH:mm");
+            this.byDate = LocalDateTime.parse(byDate, formatter);
+        } catch (DateTimeParseException e) {
+            throw new UserInputException("Wrong Date Format! Use dd/MM/yyyy-HH:mm");
+        }
+    }
+
     private String getByDateDisplayString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM y - hh:mm a");
         return this.byDate.format(formatter);
@@ -22,18 +41,6 @@ public class DeadlineTask extends Task {
     private String getByDateStorageString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy-HH:mm");
         return this.byDate.format(formatter);
-    }
-
-    public DeadlineTask(String title, String by_date) throws UserInputException {
-        super(title);
-
-        // Throws java.time.format.DateTimeParseException if invalid input
-        try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy-HH:mm");
-            this.byDate = LocalDateTime.parse(by_date, formatter);
-        } catch (DateTimeParseException e) {
-            throw new UserInputException("Wrong Date Format! Use dd/MM/yyyy-HH:mm");
-        }
     }
 
     @Override

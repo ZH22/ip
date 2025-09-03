@@ -1,10 +1,11 @@
 package Nacho.Commands;
 
-import Nacho.ChatContext;
-import Nacho.Tasks.EventTask;
-import Nacho.Exceptions.UserInputException;
-
 import java.util.Arrays;
+
+import Nacho.ChatContext;
+import Nacho.Exceptions.UserInputException;
+import Nacho.Tasks.EventTask;
+
 
 /**
  * Parses User input and adds new EventTask to Task List if valid
@@ -29,8 +30,8 @@ public class AddEventCommand implements Command {
         }
 
         String taskTitle = String.join(" ", Arrays.copyOfRange(args, 0, fromIndex));
-        String fromDate =  String.join(" ", Arrays.copyOfRange(args, fromIndex + 1, toIndex));
-        String toDate =  String.join(" ", Arrays.copyOfRange(args, toIndex + 1, args.length));
+        String fromDate = String.join(" ", Arrays.copyOfRange(args, fromIndex + 1, toIndex));
+        String toDate = String.join(" ", Arrays.copyOfRange(args, toIndex + 1, args.length));
 
         EventTask newEvent = new EventTask(taskTitle, fromDate, toDate);
         context.getTaskList().addTask(newEvent);

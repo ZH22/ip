@@ -1,11 +1,10 @@
 package Nacho.Commands;
 
-import Nacho.ChatContext;
-import Nacho.Exceptions.UserInputException;
-
 import java.util.Arrays;
 import java.util.Map;
 
+import Nacho.ChatContext;
+import Nacho.Exceptions.UserInputException;
 
 /**
  * Takes User Input directly to parse and execute the respective target Commands respectively
@@ -18,6 +17,11 @@ public class CommandDispatcher {
         this.registry = registry;
     }
 
+    /**
+     * Determines which command to hand over depending on input
+     * @param userInput raw input string from user
+     * @param context information and methods for chat ui
+     */
     public void dispatch(String userInput, ChatContext context) {
 
         // Run Commands and Catch Command Related Errors

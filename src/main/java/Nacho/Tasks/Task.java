@@ -11,6 +11,10 @@ public abstract class Task {
     private boolean completed;
     private String title;
 
+    /**
+     * Task Object Foundations
+     * @param title String title of Task
+     */
     public Task(String title) {
         this.title = title;
         this.completed = false;

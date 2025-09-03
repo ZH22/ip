@@ -1,12 +1,13 @@
 package Nacho.Tasks;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 public class TodoTaskTest {
     @Test
     public void testStringConversion() {
-        assertEquals("[T][ ] Test Title",new TodoTask("Test Title").toString() );
+        assertEquals("[T][ ] Test Title", new TodoTask("Test Title").toString());
     }
 
     @Test

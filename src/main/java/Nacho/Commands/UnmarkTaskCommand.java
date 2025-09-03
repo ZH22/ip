@@ -1,9 +1,9 @@
 package Nacho.Commands;
 
-import Nacho.Exceptions.UserInputException;
-import Nacho.Tasks.Task;
 import Nacho.ChatContext;
+import Nacho.Exceptions.UserInputException;
 import Nacho.ExternalStorageController;
+import Nacho.Tasks.Task;
 
 /**
  * Removes Completed Status from Task (if any)
@@ -12,13 +12,13 @@ public class UnmarkTaskCommand implements Command {
 
     @Override
     public void execute(String[] args, ChatContext context) {
-        int target_index = Integer.parseInt(args[0]) - 1;
+        int targetIndex = Integer.parseInt(args[0]) - 1;
 
-        if(target_index < 0 || target_index >= context.getTaskList().getTotalTasks()) {
+        if (targetIndex < 0 || targetIndex >= context.getTaskList().getTotalTasks()) {
             throw new UserInputException("Targeted Task Number not in list");
         }
 
-        Task targetTask = context.getTaskList().getTask(target_index);
+        Task targetTask = context.getTaskList().getTask(targetIndex);
 
         targetTask.unmarkCompleted();
 
