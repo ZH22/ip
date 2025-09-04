@@ -22,16 +22,25 @@ import Nacho.Tasks.TaskList;
  * Task Tracking tool based on commands from CLI input
  */
 public class Nacho {
-    public static void main(String[] args) {
+
+    private TaskList taskList;
+    private ChatContext context;
+    private Map<String, Command> commandRegistry = new HashMap<>();
+    private CommandDispatcher dispatcher;
+
+    /**
+     * Nacho Bot Constructor
+     * @param chatType Either "GUI" or "CLI" to provide chat context
+     */
+    public Nacho(String chatType) {
 
         // Creating chat context
-        TaskList taskList = new TaskList(ExternalStorageController.getStore());
+        taskList = new TaskList(ExternalStorageController.getStore());
 
         // Add TaskList object to current chat's context
-        ChatContext context = new ChatContext(taskList);
+        context = new ChatContext(taskList, chatType);
 
         // Registering commands
-        Map<String, Command> commandRegistry = new HashMap<>();
         commandRegistry.put("help", new HelpCommand());
         commandRegistry.put("todo", new AddTodoCommand());
         commandRegistry.put("deadline", new AddDeadlineCommand());
@@ -42,12 +51,16 @@ public class Nacho {
         commandRegistry.put("list", new ListTasksCommand());
         commandRegistry.put("find", new FindCommand());
 
-
         // Creating Command dispatcher object -> will run the mapped command
-        CommandDispatcher dispatcher = new CommandDispatcher(commandRegistry);
+        dispatcher = new CommandDispatcher(commandRegistry);
+    }
+
+
+    public static void main(String[] args) {
 
         // Greet the user
-        context.reply("Hello I'm Nacho\nWhat can I do for you?");
+        Nacho nacho = new Nacho("CLI");
+        nacho.context.reply("Hello I'm Nacho\nWhat can I do for you?");
 
         Scanner scanner = new Scanner(System.in);
         String query = scanner.nextLine();
@@ -55,16 +68,22 @@ public class Nacho {
         while (!query.equals("bye")) {
 
             // Handle incoming command
-            dispatcher.dispatch(query, context);
+            nacho.dispatcher.dispatch(query, nacho.context);
 
             query = scanner.nextLine();
         }
 
         // Bye Message
-        context.reply("Bye. Hope to see you soon!");
+        nacho.context.reply("Bye. Hope to see you soon!");
     }
 
-    public String getResponse(String input) {
-        return "Duke heard: " + input;
+    /**
+     * For GUI Usage
+     * @param query user input command text
+     * @return reply message from Nacho Bot
+     */
+    public String handleQuery(String query) {
+        this.dispatcher.dispatch(query, this.context);
+        return this.context.getLatestReply();
     }
 }

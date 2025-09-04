@@ -2,18 +2,26 @@ package Nacho.Ui;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.Node;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
+/**
+ * Dialog UI With Profile Picture and Text
+ */
 public class DialogBox extends HBox {
 
     private Label text;
     private ImageView displayPicture;
 
+    /**
+     * Constructor for Dialog Box
+     * @param s Text to be shown on UI
+     * @param i Profile Image to show
+     */
     public DialogBox(String s, Image i) {
         text = new Label(s);
         displayPicture = new ImageView(i);

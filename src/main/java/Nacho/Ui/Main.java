@@ -1,18 +1,24 @@
 package Nacho.Ui;
 
+import java.util.Objects;
+
 import Nacho.Nacho;
+import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
-import javafx.scene.image.Image;
-
+/**
+ * Main Class for JavaFX GUI ChatRoom with Nacho Chatbot
+ */
 public class Main extends Application {
 
     private ScrollPane scrollPane;
@@ -23,7 +29,7 @@ public class Main extends Application {
 
     private Image userImage = new Image(this.getClass().getResourceAsStream("/images/DaUser.jpg"));
     private Image nachoImage = new Image(this.getClass().getResourceAsStream("/images/DaNacho.jpg"));
-    private Nacho nacho= new Nacho();
+    private Nacho nacho = new Nacho("GUI");
 
     @Override
     public void start(Stage stage) {
@@ -84,15 +90,43 @@ public class Main extends Application {
 
         // Scroll down to the end every time dialogContainer's height changes.
         dialogContainer.heightProperty().addListener((observable) -> scrollPane.setVvalue(1.0));
+
+        // Show First Message
+        dialogContainer.getChildren().add(
+                DialogBox.getNachoDialog("Hello I'm Nacho\nWhat can I do for you?", nachoImage)
+        );
     }
 
     private void handleUserInput() {
         String userText = userInput.getText();
-        String nachoText = nacho.getResponse(userInput.getText());
+        String nachoText = "";
+        boolean toCloseWindow = false;
+
+        // Handle Bye Case
+        System.out.println(userText);
+        if (Objects.equals(userText, "bye")) {
+            nachoText = "Bye. Hope to see you again soon!\nClosing Chat in 3...2..1...";
+            toCloseWindow = true;
+        } else {
+            nachoText = nacho.handleQuery(userInput.getText());
+        }
+
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(userText, userImage),
                 DialogBox.getNachoDialog(nachoText, nachoImage)
         );
+
         userInput.clear();
+
+        // If Time to end query -> Close stage
+        if (toCloseWindow) {
+            // Using sendButton to get stage context
+            Stage stage = ((Stage) sendButton.getScene().getWindow());
+
+            // Delay one second for user to view goodbye message
+            PauseTransition delay = new PauseTransition(Duration.seconds(3));
+            delay.setOnFinished(event -> stage.close());
+            delay.play();
+        }
     }
 }
