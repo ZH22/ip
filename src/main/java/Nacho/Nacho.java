@@ -63,4 +63,8 @@ public class Nacho {
         // Bye Message
         context.reply("Bye. Hope to see you soon!");
     }
+
+    public String getResponse(String input) {
+        return "Duke heard: " + input;
+    }
 }
