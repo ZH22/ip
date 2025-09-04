@@ -6,8 +6,9 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 
 /**
  * Dialog UI With Profile Picture and Text
@@ -15,7 +16,7 @@ import javafx.scene.layout.HBox;
 public class DialogBox extends HBox {
 
     private Label text;
-    private ImageView displayPicture;
+    private Circle displayPicture;
 
     /**
      * Constructor for Dialog Box
@@ -24,15 +25,20 @@ public class DialogBox extends HBox {
      */
     public DialogBox(String s, Image i) {
         text = new Label(s);
-        displayPicture = new ImageView(i);
+        displayPicture = new Circle(20);
+        displayPicture.setFill(new ImagePattern(i));
+
+        // Set CSS Class
+        text.getStyleClass().add("dialog_text");
+        displayPicture.getStyleClass().add("dialog_picture");
 
         //Styling the dialog box
         text.setWrapText(true);
-        displayPicture.setFitWidth(100.0);
-        displayPicture.setFitHeight(100.0);
-        this.setAlignment(Pos.TOP_RIGHT);
 
+        this.setAlignment(Pos.TOP_RIGHT);
         this.getChildren().addAll(text, displayPicture);
+
+        this.setSpacing(15);
     }
 
     /**
@@ -45,12 +51,19 @@ public class DialogBox extends HBox {
         this.getChildren().setAll(tmp);
     }
 
+    private Label getTextNode() {
+        return text;
+    }
+
     public static DialogBox getUserDialog(String s, Image i) {
-        return new DialogBox(s, i);
+        DialogBox uDB = new DialogBox(s, i);
+        uDB.getTextNode().getStyleClass().add("userDB");
+        return uDB;
     }
 
     public static DialogBox getNachoDialog(String s, Image i) {
         var db = new DialogBox(s, i);
+        db.getTextNode().getStyleClass().add("nachoDB");
         db.flip();
         return db;
     }

@@ -39,6 +39,11 @@ public class Main extends Application {
         dialogContainer = new VBox();
         scrollPane.setContent(dialogContainer);
 
+        // Styling Settings
+        scrollPane.getStyleClass().add("my-scrollPane");
+        dialogContainer.getStyleClass().add("my-dialogContainer");
+        dialogContainer.setSpacing(20);
+
         userInput = new TextField();
         sendButton = new Button("Send");
 
@@ -46,13 +51,15 @@ public class Main extends Application {
         mainLayout.getChildren().addAll(scrollPane, userInput, sendButton);
 
         scene = new Scene(mainLayout);
+        scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
 
         stage.setScene(scene);
         stage.show();
 
+
         //More code to be added here later
 
-        stage.setTitle("Duke");
+        stage.setTitle("Nacho - Personal Cheesy Todo Tracker");
         stage.setResizable(false);
         stage.setMinHeight(600.0);
         stage.setMinWidth(400.0);
@@ -103,7 +110,6 @@ public class Main extends Application {
         boolean toCloseWindow = false;
 
         // Handle Bye Case
-        System.out.println(userText);
         if (Objects.equals(userText, "bye")) {
             nachoText = "Bye. Hope to see you again soon!\nClosing Chat in 3...2..1...";
             toCloseWindow = true;
