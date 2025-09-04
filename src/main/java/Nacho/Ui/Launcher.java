@@ -1,4 +1,4 @@
-package Nacho;
+package Nacho.Ui;
 
 import javafx.application.Application;
 
