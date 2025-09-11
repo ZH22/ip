@@ -17,6 +17,7 @@ public class HelpCommand implements Command {
                 + "mark <task_number>\n"
                 + "unmark <task_number>\n"
                 + "find <keyword>\n"
+                + "sort\n"
                 + "delete <task_number>";
         context.reply(helpMessage);
     }
