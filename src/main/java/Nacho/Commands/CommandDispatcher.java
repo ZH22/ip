@@ -35,7 +35,8 @@ public class CommandDispatcher {
             if (cmd != null) {
                 cmd.execute(args, context);
             } else {
-                context.reply("Sorry I don't know this command. \n\nTry 'help' for a list of commands to use!");
+                context.reply("Sorry I don't know this command. \n\n"
+                        + "Try 'help' for a list of commands to use!");
             }
         } catch (UserInputException e) {
             context.reply(e.getMessage());

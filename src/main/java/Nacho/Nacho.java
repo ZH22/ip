@@ -16,6 +16,7 @@ import Nacho.Commands.ListTasksCommand;
 import Nacho.Commands.MarkTaskCommand;
 import Nacho.Commands.UnmarkTaskCommand;
 import Nacho.Tasks.TaskList;
+import Nacho.UiType;
 
 /**
  * Main class of Nacho Chatbot
@@ -32,7 +33,7 @@ public class Nacho {
      * Nacho Bot Constructor
      * @param chatType Either "GUI" or "CLI" to provide chat context
      */
-    public Nacho(String chatType) {
+    public Nacho(UiType chatType) {
         assert chatType != null;
 
         // Creating chat context
@@ -60,7 +61,7 @@ public class Nacho {
     public static void main(String[] args) {
 
         // Greet the user
-        Nacho nacho = new Nacho("CLI");
+        Nacho nacho = new Nacho(UiType.CLI);
         nacho.context.reply("Hello I'm Nacho\nWhat can I do for you?");
 
         Scanner scanner = new Scanner(System.in);

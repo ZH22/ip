@@ -19,7 +19,7 @@ public class DeadlineTask extends Task {
      * Creates a Deadline Task Object
      * @param title Task Title
      * @param byDate datetime (dd/MM/yyyy-HH:mm") formatted
-     * @throws UserInputException
+     * @throws UserInputException Throws exception when user types something unrecognised
      */
     public DeadlineTask(String title, String byDate) throws UserInputException {
         super(title);
@@ -56,6 +56,8 @@ public class DeadlineTask extends Task {
 
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by: " + this.getByDateDisplayString() + ")";
+        return "[D]" + super.toString()
+                + " (by: " + this.getByDateDisplayString()
+                + ")";
     }
 }

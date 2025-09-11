@@ -19,15 +19,14 @@ public class MarkTaskCommand implements Command {
         }
 
         Task targetTask = context.getTaskList().getTask(targetIndex);
-
         targetTask.markCompleted();
+
+        // Update External DB
+        String storageRepresentation = context.getTaskList().getStorageRepresentation();
+        ExternalStorageController.updateStore(storageRepresentation);
 
         String replyMessage = "Nice! I've marked this task as done:\n"
                 + targetTask.toString().indent(context.getIndentLevel());
-
-        // Update External DB
-        ExternalStorageController.updateStore(context.getTaskList().getStorageRepresentation());
-
         context.reply(replyMessage);
 
     }
