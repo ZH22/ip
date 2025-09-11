@@ -40,6 +40,8 @@ public class ChatContext {
      * @param message String containing information to be "said" by Nacho Chatbot
      */
     public void reply(String message) {
+        assert (this.chatType == "CLI" || this.chatType == "GUI");
+
         if (this.chatType == "CLI") {
             String styledMessage = (horizontalLine + "\n" + message + "\n" + horizontalLine).indent(indentLevel);
             System.out.print(styledMessage);
