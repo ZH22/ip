@@ -21,6 +21,7 @@ public class ExternalStorageController {
      * @param newContent String in storage format
      */
     public static void updateStore(String newContent) {
+        assert newContent != null;
 
         // Create Data Directory and File if not exist
         try {
