@@ -22,13 +22,13 @@ import javafx.util.Duration;
  */
 public class Main extends Application {
 
-    private final double MIN_HEIGHT = 600.0;
-    private final double MIN_WIDTH = MIN_HEIGHT / 6 * 4;
-    double INPUT_WIDTH = MIN_WIDTH * 0.8125;
-    double INPUT_HEIGHT = MIN_HEIGHT * 0.05;
-    double BUTTON_WIDTH = MIN_WIDTH * 0.1375;
-    double SCROLL_WIDTH = MIN_WIDTH * 0.9925; // Ratio of Scroll Area
-    double SCROLL_HEIGHT = MIN_HEIGHT * 0.944666;
+    private static final double MIN_HEIGHT = 600.0;
+    private static final double MIN_WIDTH = MIN_HEIGHT / 6 * 4;
+    private static final double INPUT_WIDTH = MIN_WIDTH * 0.8125;
+    private static final double INPUT_HEIGHT = MIN_HEIGHT * 0.05;
+    private static final double BUTTON_WIDTH = MIN_WIDTH * 0.1375;
+    private static final double SCROLL_WIDTH = MIN_WIDTH * 0.9925; // Ratio of Scroll Area
+    private static final double SCROLL_HEIGHT = MIN_HEIGHT * 0.944666;
 
     private TextField userInput;
     private Scene scene;

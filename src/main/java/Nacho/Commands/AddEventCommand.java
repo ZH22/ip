@@ -34,7 +34,7 @@ public class AddEventCommand implements Command {
         context.reply(replyMessage);
     }
 
-    private void checkArgsForErrors(String args[], int fromIndex, int toIndex) {
+    private void checkArgsForErrors(String []args, int fromIndex, int toIndex) {
         if (args.length == 0 || fromIndex == -1 || toIndex == -1) {
             throw new UserInputException("Missing arguments!\nSee 'help' for more info");
         } else if (fromIndex == 0) {

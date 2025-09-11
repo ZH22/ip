@@ -1,7 +1,6 @@
 package Nacho;
 
 import Nacho.Tasks.TaskList;
-import Nacho.UiType;
 
 /**
  * Handles UI and Chat Context for Nacho Chatbot
@@ -12,7 +11,7 @@ import Nacho.UiType;
 public class ChatContext {
     // Visual Elements
     private static String horizontalLine = "-----------------------------------";
-    private static int INDENT_LEVEL = 4;
+    private static final int INDENT_LEVEL = 4;
     private TaskList taskList;
     private UiType chatType;
     private String latestMessage;

@@ -16,7 +16,6 @@ import Nacho.Commands.ListTasksCommand;
 import Nacho.Commands.MarkTaskCommand;
 import Nacho.Commands.UnmarkTaskCommand;
 import Nacho.Tasks.TaskList;
-import Nacho.UiType;
 
 /**
  * Main class of Nacho Chatbot
