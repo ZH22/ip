@@ -68,6 +68,15 @@ public class TaskList {
     }
 
     /**
+     * Sorts the Tasklist by Title lexicographically
+     * Updates the external database as well
+     */
+    public void sortTaskByTitle() {
+        taskList.sort(new TitleComparator());
+        ExternalStorageController.updateStore(this.getStorageRepresentation());
+    }
+
+    /**
      * gets speciied Task object
      * @param taskIndex index of target Task
      * @return Task Object at taskIndex

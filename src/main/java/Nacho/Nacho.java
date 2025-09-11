@@ -14,6 +14,7 @@ import Nacho.Commands.FindCommand;
 import Nacho.Commands.HelpCommand;
 import Nacho.Commands.ListTasksCommand;
 import Nacho.Commands.MarkTaskCommand;
+import Nacho.Commands.SortCommand;
 import Nacho.Commands.UnmarkTaskCommand;
 import Nacho.Tasks.TaskList;
 
@@ -51,6 +52,7 @@ public class Nacho {
         commandRegistry.put("delete", new DeleteTaskCommand());
         commandRegistry.put("list", new ListTasksCommand());
         commandRegistry.put("find", new FindCommand());
+        commandRegistry.put("sort", new SortCommand());
 
         // Creating Command dispatcher object -> will run the mapped command
         dispatcher = new CommandDispatcher(commandRegistry);
