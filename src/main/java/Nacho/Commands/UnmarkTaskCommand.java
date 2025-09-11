@@ -22,12 +22,13 @@ public class UnmarkTaskCommand implements Command {
 
         targetTask.unmarkCompleted();
 
-        String replyMessage = "OK, I've marked this task as not done yet:\n"
-                + targetTask.toString().indent(context.getIndentLevel());
 
         // Update External DB
-        ExternalStorageController.updateStore(context.getTaskList().getStorageRepresentation());
+        String storageRepresentation = context.getTaskList().getStorageRepresentation();
+        ExternalStorageController.updateStore(storageRepresentation);
 
+        String replyMessage = "OK, I've marked this task as not done yet:\n"
+                + targetTask.toString().indent(context.getIndentLevel());
         context.reply(replyMessage);
 
     }

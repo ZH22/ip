@@ -22,7 +22,6 @@ public class FindCommand implements Command {
             throw new UserInputException("Improper Format. Require one Keyword to search by!");
         }
 
-
         ArrayList<Task> matchingTasks = new ArrayList<>();
 
         // Find and add matching tasks to list
@@ -33,12 +32,17 @@ public class FindCommand implements Command {
             }
         }
 
+        // Reply Matching tasks
+        context.reply(formReplyMessage(matchingTasks));
+    }
+
+    private String formReplyMessage(ArrayList<Task> matchingTasks) {
         // Print out matching tasks
         String replyMessage = "Here are the matching tasks in your list:\n";
         for (int i = 0; i < matchingTasks.size(); i++) {
             String currentTaskLine = String.format("%d. %s\n", i, matchingTasks.get(i));
             replyMessage = replyMessage + currentTaskLine;
         }
-        context.reply(replyMessage);
+        return replyMessage;
     }
 }

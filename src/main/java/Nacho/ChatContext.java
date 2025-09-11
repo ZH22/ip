@@ -1,6 +1,7 @@
 package Nacho;
 
 import Nacho.Tasks.TaskList;
+import Nacho.UiType;
 
 /**
  * Handles UI and Chat Context for Nacho Chatbot
@@ -11,9 +12,9 @@ import Nacho.Tasks.TaskList;
 public class ChatContext {
     // Visual Elements
     private static String horizontalLine = "-----------------------------------";
-    private static int indentLevel = 4;
+    private static int INDENT_LEVEL = 4;
     private TaskList taskList;
-    private String chatType;
+    private UiType chatType;
     private String latestMessage;
 
     /**
@@ -21,7 +22,7 @@ public class ChatContext {
      * @param taskList List of Task Objects
      * @param chatType type of chat "GUI" or "CLI" -> Affects reply handling
      */
-    public ChatContext(TaskList taskList, String chatType) {
+    public ChatContext(TaskList taskList, UiType chatType) {
         this.taskList = taskList;
         this.chatType = chatType;
     }
@@ -31,7 +32,7 @@ public class ChatContext {
     }
 
     public int getIndentLevel() {
-        return indentLevel;
+        return INDENT_LEVEL;
     }
 
     /**
@@ -40,10 +41,10 @@ public class ChatContext {
      * @param message String containing information to be "said" by Nacho Chatbot
      */
     public void reply(String message) {
-        if (this.chatType == "CLI") {
-            String styledMessage = (horizontalLine + "\n" + message + "\n" + horizontalLine).indent(indentLevel);
+        if (this.chatType == UiType.CLI) {
+            String styledMessage = (horizontalLine + "\n" + message + "\n" + horizontalLine).indent(INDENT_LEVEL);
             System.out.print(styledMessage);
-        } else if (this.chatType == "GUI") {
+        } else if (this.chatType == UiType.GUI) {
             this.latestMessage = message;
         }
     }
