@@ -34,6 +34,7 @@ public class Nacho {
      * @param chatType Either "GUI" or "CLI" to provide chat context
      */
     public Nacho(UiType chatType) {
+        assert chatType != null;
 
         // Creating chat context
         taskList = new TaskList(ExternalStorageController.getStore());
