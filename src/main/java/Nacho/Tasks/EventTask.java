@@ -1,5 +1,8 @@
 package Nacho.Tasks;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  * Task with a time range (from - to)
  */
@@ -20,6 +23,12 @@ public class EventTask extends Task {
         this.toDate = toDate;
     }
 
+    private String getDisplayDateString(String inputString) {
+        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy-HH:mm");
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("dd MMMM yyyy - hh:mm a");
+        return LocalDateTime.parse(inputString, inputFormatter).format(outputFormatter);
+    }
+
     @Override
     public String getStorageRepresentation() {
         String[] info = new String[5];
@@ -34,7 +43,8 @@ public class EventTask extends Task {
 
     @Override
     public String toString() {
-        String eventDateString = "(from: " + this.fromDate + " to: " + this.toDate + ")";
+        String eventDateString = "(from: " + getDisplayDateString(this.fromDate) + " to: "
+                + getDisplayDateString(this.toDate) + ")";
         return "[E]" + super.toString() + " " + eventDateString;
     }
 }
