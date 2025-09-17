@@ -18,6 +18,7 @@ CLI &rarr; Run the file `Nacho.java` from 'src/main/java/nacho'
 ---
 
 ## Types of Supported Tasks 
+
 | Task Type | Description                   |
 |---------|-------------------------------|
 |✅   Todo | Quick Task to note down       |
