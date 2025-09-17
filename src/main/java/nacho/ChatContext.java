@@ -1,5 +1,6 @@
 package nacho;
 
+import nacho.commons.UiType;
 import nacho.tasks.TaskList;
 
 /**
@@ -15,6 +16,7 @@ public class ChatContext {
     private TaskList taskList;
     private UiType chatType;
     private String latestMessage;
+    private boolean isLatestMessageWrong = false;
 
     /**
      * Sets the Chat Context Object
@@ -57,6 +59,25 @@ public class ChatContext {
         String message = this.latestMessage;
         this.latestMessage = null; // Resets reply message after being "Read" to prevent reread
         return message;
+    }
 
+    /**
+     * Returns whether the latest message is an error message
+     * To use in styling GUI error messages
+     * Resets back to false after being read
+     * @return boolean representing whether latest message is an error message
+     */
+    public boolean getLatestMessageValidity() {
+        boolean temp = this.isLatestMessageWrong;
+        this.isLatestMessageWrong = false;
+        return temp;
+    }
+
+    /**
+     * Sets the latest message as an error message
+     * To use in styling GUI error messages
+     */
+    public void setLatestMessageWrong() {
+        this.isLatestMessageWrong = true;
     }
 }

@@ -15,7 +15,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import nacho.Nacho;
-import nacho.UiType;
+import nacho.commons.QueryResult;
+import nacho.commons.UiType;
 
 /**
  * Main Class for JavaFX GUI ChatRoom with Nacho Chatbot
@@ -67,19 +68,24 @@ public class Main extends Application {
         String userText = userInput.getText();
         String nachoText = "";
         boolean toCloseWindow = false;
+        boolean isReplyError = false;
 
         // Handle Bye Case
         if (Objects.equals(userText, "bye")) {
+            isReplyError = false;
             nachoText = "Bye. Hope to see you again soon!\nClosing Chat in 3...2..1...";
             toCloseWindow = true;
         } else {
-            nachoText = nacho.handleQuery(userInput.getText());
+            // General Case -> Get Nacho's reply
+            QueryResult result = nacho.handleQuery(userInput.getText());
+            nachoText = result.reply;
+            isReplyError = result.isError;
         }
 
         // Show message on screen
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(userText, userImage),
-                DialogBox.getNachoDialog(nachoText, nachoImage)
+                DialogBox.getNachoDialog(nachoText, nachoImage, isReplyError)
         );
 
         userInput.clear();
@@ -146,7 +152,7 @@ public class Main extends Application {
 
         // Show First Message
         dialogContainer.getChildren().add(
-                DialogBox.getNachoDialog("Hello I'm Nacho\nWhat can I do for you?", nachoImage)
+                DialogBox.getNachoDialog("Hello I'm Nacho\nWhat can I do for you?", nachoImage, false)
         );
         return dialogContainer;
     }

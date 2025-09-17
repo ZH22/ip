@@ -1,4 +1,4 @@
-package nacho;
+package nacho.commons;
 
 /**
  * Types of Ui Choices available

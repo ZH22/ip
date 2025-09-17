@@ -61,9 +61,12 @@ public class DialogBox extends HBox {
         return uDB;
     }
 
-    public static DialogBox getNachoDialog(String s, Image i) {
+    public static DialogBox getNachoDialog(String s, Image i, boolean isError) {
         var db = new DialogBox(s, i);
         db.getTextNode().getStyleClass().add("nachoDB");
+        if (isError) {
+            db.getTextNode().getStyleClass().add("errorDB");
+        }
         db.flip();
         return db;
     }

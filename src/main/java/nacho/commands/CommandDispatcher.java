@@ -37,11 +37,14 @@ public class CommandDispatcher {
             } else {
                 context.reply("Sorry I don't know this command. \n\n"
                         + "Try 'help' for a list of commands to use!");
+                context.setLatestMessageWrong();
             }
         } catch (UserInputException e) {
             context.reply(e.getMessage());
+            context.setLatestMessageWrong(); // Tags latest message as error for styling use
         } catch (Exception e) {
             context.reply("Unexpected Error!! Nacho doesn't really know either T^T");
+            context.setLatestMessageWrong(); // Tags latest message as error for styling use
         }
     }
 

@@ -16,6 +16,8 @@ import nacho.commands.ListTasksCommand;
 import nacho.commands.MarkTaskCommand;
 import nacho.commands.SortCommand;
 import nacho.commands.UnmarkTaskCommand;
+import nacho.commons.QueryResult;
+import nacho.commons.UiType;
 import nacho.tasks.TaskList;
 
 /**
@@ -87,8 +89,12 @@ public class Nacho {
      * @param query user input command text
      * @return reply message from Nacho Bot
      */
-    public String handleQuery(String query) {
+    public QueryResult handleQuery(String query) {
         this.dispatcher.dispatch(query, this.context);
-        return this.context.getLatestReply();
+        QueryResult result = new QueryResult(
+                this.context.getLatestReply(),
+                this.context.getLatestMessageValidity()
+        );
+        return result;
     }
 }

@@ -25,6 +25,12 @@
     -fx-font-family: "Courier New";
 }
 
+.dialog_text.nachoDB.errorDB {
+    -fx-text-fill: white;
+    -fx-border-color: #b94a48;
+    -fx-background-color: #da4f49;
+}
+
 .dialog_text {
     -fx-padding: 10;
     -fx-font-weight: bold;
