@@ -1,8 +1,5 @@
 package nacho.tasks;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 /**
  * Task with a time range (from - to)
  */

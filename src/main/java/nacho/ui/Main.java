@@ -78,8 +78,8 @@ public class Main extends Application {
         } else {
             // General Case -> Get Nacho's reply
             QueryResult result = nacho.handleQuery(userInput.getText());
-            nachoText = result.reply;
-            isReplyError = result.isError;
+            nachoText = result.getReply();
+            isReplyError = result.checkIfError();
         }
 
         // Show message on screen
