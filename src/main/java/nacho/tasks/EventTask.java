@@ -23,11 +23,13 @@ public class EventTask extends Task {
         this.toDate = toDate;
     }
 
+    /*
     private String getDisplayDateString(String inputString) {
         DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy-HH:mm");
         DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("dd MMMM yyyy - hh:mm a");
         return LocalDateTime.parse(inputString, inputFormatter).format(outputFormatter);
     }
+     */
 
     @Override
     public String getStorageRepresentation() {
@@ -43,8 +45,8 @@ public class EventTask extends Task {
 
     @Override
     public String toString() {
-        String eventDateString = "(from: " + getDisplayDateString(this.fromDate) + " to: "
-                + getDisplayDateString(this.toDate) + ")";
+        String eventDateString = "(from: " + this.fromDate + " to: "
+                + this.toDate + ")";
         return "[E]" + super.toString() + " " + eventDateString;
     }
 }

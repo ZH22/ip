@@ -11,7 +11,7 @@ public class EventTaskTest {
 
         // Standard String Conversion Format
         assertEquals(
-                "[E][ ] Team Meeting (from: 17 September 2025 - 02:30 PM to: 17 September 2025 - 03:30 PM)",
+                "[E][ ] Team Meeting (from: 17/09/2025-14:30 to: 17/09/2025-15:30)",
                 testTask.toString()
         );
 
@@ -21,18 +21,18 @@ public class EventTaskTest {
 
     @Test
     public void testMarkAndUnmark() {
-        EventTask testTask = new EventTask("Team Meeting", "17/09/2025-14:30", "17/09/2025-15:30");
+        EventTask testTask = new EventTask("Team Meeting", "StartDate", "EndDate");
 
         testTask.markCompleted();
         assertEquals(
-                "[E][X] Team Meeting (from: 17 September 2025 - 02:30 PM to: 17 September 2025 - 03:30 PM)",
+                "[E][X] Team Meeting (from: StartDate to: EndDate)",
                 testTask.toString()
         );
         assertEquals(1, testTask.isCompleted());
 
         testTask.unmarkCompleted();
         assertEquals(
-                "[E][ ] Team Meeting (from: 17 September 2025 - 02:30 PM to: 17 September 2025 - 03:30 PM)",
+                "[E][ ] Team Meeting (from: StartDate to: EndDate)",
                 testTask.toString()
         );
         assertEquals(0, testTask.isCompleted());
