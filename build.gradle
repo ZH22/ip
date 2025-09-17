@@ -44,7 +44,7 @@ test {
 }
 
 application {
-    mainClass.set("Nacho.Ui.Launcher")
+    mainClass.set("nacho.ui.Launcher")
 }
 
 shadowJar {
