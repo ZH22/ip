@@ -28,4 +28,17 @@ public class TodoTaskTest {
         assertEquals("[T][ ] Study for exam", testTask.toString());
         assertEquals(0, testTask.isCompleted());
     }
+
+    @Test
+    public void testMarkedStorageRepresentation() {
+        TodoTask testTask = new TodoTask("Read a book");
+
+        // Mark Completed Storage Representation
+        testTask.markCompleted();
+        assertEquals("T | 1 | Read a book", testTask.getStorageRepresentation());
+
+        // Unmark completion Storage Representation
+        testTask.unmarkCompleted();
+        assertEquals("T | 0 | Read a book", testTask.getStorageRepresentation());
+    }
 }

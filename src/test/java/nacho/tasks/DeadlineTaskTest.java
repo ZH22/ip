@@ -1,8 +1,11 @@
 package nacho.tasks;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
+
+import nacho.exceptions.UserInputException;
 
 public class DeadlineTaskTest {
     @Test
@@ -27,6 +30,11 @@ public class DeadlineTaskTest {
         testTask.unmarkCompleted();
         assertEquals("[D][ ] Test (by: 08 December 2025 - 11:40 PM)", testTask.toString());
         assertEquals(0, testTask.isCompleted());
+    }
+
+    @Test
+    public void testWrongDateFormat() {
+        assertThrows(UserInputException.class, () -> new DeadlineTask("Test", "InproperString"));
     }
 
 }
