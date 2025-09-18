@@ -1,5 +1,5 @@
 # Nacho User Guide
-![Product Screenshot](./NachoScreenshot.png "Product Screenshot")
+![Product Screenshot](./UI.png "Product Screenshot")
 
 Say Hello to Nacho, your on the fly task management companion!
 
