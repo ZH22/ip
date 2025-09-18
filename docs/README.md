@@ -7,14 +7,20 @@ With Nacho, keeping track of your tasks is just a easy as grabbing a snack! 😜
 
 ---
 ## How to Run
-Nacho supports 2 types of interactions
+### Pre-requisites
+- Java 17 installed and configured in PATH
+- Download the latest JAR file from [here](https://github.com/ZH22/ip/releases)
+
+### Nacho supports 2 types of interactions
 1. (Default) GUI
 2. CLI 
 
-GUI &rarr; Simply run the JAR file 
+GUI &rarr; Simply run the JAR file
 
 CLI &rarr; Run the file `Nacho.java` from 'src/main/java/nacho'
 
+* Note: Nacho will create the directory and file `./data/mainStore.txt` in the local directory if it does not exist on intial run
+* File will be used to store tasks between sessions
 ---
 
 ## Types of Supported Tasks 
